@@ -1,0 +1,95 @@
+ALGORITHME THESQUARE
+//BUT 	:
+//ENTREE:
+//SORTIE:
+
+CONST tmax = 5 : ENTIER
+VAR middle, nb, i, j : ENTIER
+tabu:TABLEAU [1..tmax,1..tmax] de ENTIER
+tabo :TABLEAU [1..tmax,1..tmax] de BOOLEAN
+
+DEBUT 
+
+nb<---1
+
+
+POUR i=1 DE tmax FAIRE
+ DEBUT
+ 	POUR j=1 DE tmax FAIRE
+ 		DEBUT
+ 		
+ 		tabo[i,j]<-- FAUX
+
+ 	FINPOUR
+FINPOUR	
+
+middle<-- imax DIV 2+1
+middle<-- middle+(jmax-1)
+
+
+
+i<--middle
+j<--middle-1
+
+tabu[i,j]<-- nb
+ 
+ tabo[i,j]<-- Vrai
+
+
+
+
+
+Tantque nb<>tmax*tmax FAIRE
+    i<--i+1
+    j<--j-1
+    
+
+     SI i=tmax+1 ALORS
+     i<--1
+     FINSI
+     SI j=0 ALORS
+     j<--tmax
+     FINSI
+
+     	SI tabo[i,j] <-- FAUX ALORS
+     	tabu [i,j] <-- nb+1
+     	SINON 
+     	i<--i-1
+     	j<--j-1
+     	tabo[i,j] <-- VRAI
+
+     		SI i=0 ALORS
+     		i<--tmax
+     		FINSI
+     			SI j=0 ALORS
+     			j<--tmax
+     			FINSI
+      
+     tabu [i,j] <-- nb+1
+     tabo[i,j] <-- VRAI
+     FINTANQUE
+
+     
+
+POUR i=1 DE tmax FAIRE
+ DEBUT
+ 	POUR j=1 DE tmax FAIRE
+ 		DEBUT
+ 		ECRIRE ('|');
+ 		ECRIRE(tabu[j,i]);
+ 	FINPOUR;
+ 	ECRIRE ('|');
+ ECRIRE;
+FINPOUR
+
+FIN
+
+
+
+
+
+
+
+
+
+ 
